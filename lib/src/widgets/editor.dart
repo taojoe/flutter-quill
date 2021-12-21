@@ -200,6 +200,8 @@ Widget defaultEmbedBuilder(
           : isBase64(imageUrl)
               ? Image.memory(base64.decode(imageUrl))
               : Image.file(io.File(imageUrl));
+    case 'video':
+      return Text('不支持视频');
     default:
       throw UnimplementedError(
         'Embeddable type "${node.value.type}" is not supported by default '
