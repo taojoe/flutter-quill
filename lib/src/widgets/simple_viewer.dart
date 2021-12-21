@@ -19,8 +19,6 @@ import 'delegate.dart';
 import 'editor.dart';
 import 'text_block.dart';
 import 'text_line.dart';
-import 'video_app.dart';
-import 'youtube_video_app.dart';
 
 class QuillSimpleViewer extends StatefulWidget {
   const QuillSimpleViewer({
@@ -111,14 +109,6 @@ class _QuillSimpleViewerState extends State<QuillSimpleViewer>
             : isBase64(imageUrl)
                 ? Image.memory(base64.decode(imageUrl))
                 : Image.file(io.File(imageUrl));
-      case 'video':
-        final videoUrl = node.value.data;
-        if (videoUrl.contains('youtube.com') || videoUrl.contains('youtu.be')) {
-          return YoutubeVideoApp(
-              videoUrl: videoUrl, context: context, readOnly: readOnly);
-        }
-        return VideoApp(
-            videoUrl: videoUrl, context: context, readOnly: readOnly);
       default:
         throw UnimplementedError(
           'Embeddable type "${node.value.type}" is not supported by default '

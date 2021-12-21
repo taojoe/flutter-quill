@@ -9,11 +9,9 @@ import '../models/themes/quill_icon_theme.dart';
 import '../utils/media_pick_setting.dart';
 import 'controller.dart';
 import 'toolbar/arrow_indicated_button_list.dart';
-import 'toolbar/camera_button.dart';
 import 'toolbar/clear_format_button.dart';
 import 'toolbar/color_button.dart';
 import 'toolbar/history_button.dart';
-import 'toolbar/image_button.dart';
 import 'toolbar/indent_button.dart';
 import 'toolbar/insert_embed_button.dart';
 import 'toolbar/link_style_button.dart';
@@ -21,13 +19,11 @@ import 'toolbar/select_alignment_button.dart';
 import 'toolbar/select_header_style_button.dart';
 import 'toolbar/toggle_check_list_button.dart';
 import 'toolbar/toggle_style_button.dart';
-import 'toolbar/video_button.dart';
 
 export '../utils/media_pick_setting.dart';
 export 'toolbar/clear_format_button.dart';
 export 'toolbar/color_button.dart';
 export 'toolbar/history_button.dart';
-export 'toolbar/image_button.dart';
 export 'toolbar/indent_button.dart';
 export 'toolbar/insert_embed_button.dart';
 export 'toolbar/link_style_button.dart';
@@ -37,7 +33,6 @@ export 'toolbar/select_alignment_button.dart';
 export 'toolbar/select_header_style_button.dart';
 export 'toolbar/toggle_check_list_button.dart';
 export 'toolbar/toggle_style_button.dart';
-export 'toolbar/video_button.dart';
 
 typedef OnImagePickCallback = Future<String?> Function(File file);
 typedef OnVideoPickCallback = Future<String?> Function(File file);
@@ -243,43 +238,6 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
             icon: Icons.format_clear,
             iconSize: toolbarIconSize,
             controller: controller,
-            iconTheme: iconTheme,
-          ),
-        if (showImageButton)
-          ImageButton(
-            icon: Icons.image,
-            iconSize: toolbarIconSize,
-            controller: controller,
-            onImagePickCallback: onImagePickCallback,
-            filePickImpl: filePickImpl,
-            webImagePickImpl: webImagePickImpl,
-            mediaPickSettingSelector: mediaPickSettingSelector,
-            iconTheme: iconTheme,
-            dialogTheme: dialogTheme,
-          ),
-        if (showVideoButton)
-          VideoButton(
-            icon: Icons.movie_creation,
-            iconSize: toolbarIconSize,
-            controller: controller,
-            onVideoPickCallback: onVideoPickCallback,
-            filePickImpl: filePickImpl,
-            webVideoPickImpl: webImagePickImpl,
-            mediaPickSettingSelector: mediaPickSettingSelector,
-            iconTheme: iconTheme,
-            dialogTheme: dialogTheme,
-          ),
-        if ((onImagePickCallback != null || onVideoPickCallback != null) &&
-            showCameraButton)
-          CameraButton(
-            icon: Icons.photo_camera,
-            iconSize: toolbarIconSize,
-            controller: controller,
-            onImagePickCallback: onImagePickCallback,
-            onVideoPickCallback: onVideoPickCallback,
-            filePickImpl: filePickImpl,
-            webImagePickImpl: webImagePickImpl,
-            webVideoPickImpl: webVideoPickImpl,
             iconTheme: iconTheme,
           ),
         if (showDividers &&
